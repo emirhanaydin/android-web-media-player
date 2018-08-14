@@ -120,19 +120,13 @@ class PlayerActivity : AppCompatActivity() {
 
     @SuppressLint("InlinedApi")
     private fun hideSystemUi() {
-        val flags: IntArray = intArrayOf(
-                View.SYSTEM_UI_FLAG_LOW_PROFILE,
-                View.SYSTEM_UI_FLAG_FULLSCREEN,
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE,
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY,
-                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION,
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
-
-        var visibility = 0
-        for (i in flags)
-            visibility = visibility or i
-
-        playerView.systemUiVisibility = visibility
+        playerView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LOW_PROFILE or
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                View.SYSTEM_UI_FLAG_FULLSCREEN or
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
     }
 
     inner class ComponentListener : Player.DefaultEventListener(), AnalyticsListener {
